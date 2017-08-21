@@ -11,6 +11,7 @@ class TestFormatAmount(unittest.TestCase):
         self.assertEqual(5.6789, trunc_decimals(5.6789, 4))
         self.assertEqual(5.6785, trunc_decimals(5.6785, 4))
         self.assertEqual(5.675, trunc_decimals(5.6755, 3))
+        self.assertEqual(5.675, trunc_decimals(5.6756, 3))
         self.assertEqual(5.678, trunc_decimals(5.6789, 3))
         self.assertEqual(5.67, trunc_decimals(5.6789, 2))
         self.assertEqual(5.6, trunc_decimals(5.6789, 1))
@@ -68,5 +69,5 @@ class TestFormatAmount(unittest.TestCase):
         self.assertEqual(4.7, g33_round(4.65, 1))
         self.assertEqual(4.6, g33_round(4.55, 1))
 
-    if __name__ == '__main__':
-        unittest.main(exit=False)
+if __name__ == '__main__':
+    unittest.main(exit=False)
