@@ -1,5 +1,6 @@
 """Test Class"""
 import unittest
+import math
 
 from FormatAmount import trunc_decimals, format_ai, format_dp, format_yld, g33_round
 
@@ -68,6 +69,24 @@ class TestFormatAmount(unittest.TestCase):
         self.assertEqual(5.68, g33_round(5.675, 2))
         self.assertEqual(4.7, g33_round(4.65, 1))
         self.assertEqual(4.6, g33_round(4.55, 1))
+
+    def test_g33_round_negative(self):
+        """test_g33_round_negative - returns rounded no to no_of_digits decimal places,
+        test cases for negatives"""
+        self.assertEqual(-23.57, g33_round(-23.567, 2))
+        self.assertEqual(-23.57, g33_round(-23.566, 2))
+        self.assertEqual(-23.56, g33_round(-23.565, 2))
+        self.assertEqual(-23.56, g33_round(-23.564, 2))
+        self.assertEqual(-23.56, g33_round(-23.557, 2))
+        self.assertEqual(-23.56, g33_round(-23.556, 2))
+        self.assertEqual(-23.55, g33_round(-23.555, 2))
+        self.assertEqual(-23.55, g33_round(-23.554, 2))
+
+    def test_ceil(self):
+        """test_ceil tests math.ceil, which is used in g33_round"""
+        self.assertEqual(-2356, math.ceil(-2356.5))
+        self.assertEqual(2357, math.ceil(2356.5))
+        self.assertEqual(6, math.ceil(5.5))
 
 if __name__ == '__main__':
     unittest.main(exit=False)
